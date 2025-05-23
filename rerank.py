@@ -146,7 +146,7 @@ def rerank_all_topics(args):
     else:
         with Pool(args.worker) as p:
             runner = tqdm(
-                p.imap_unordered(rerank_topic, jobs), 
+                p.imap(rerank_topic, jobs), 
                 total=all_records['query_id'].unique().size, 
                 desc="reranking topics",
                 dynamic_ncols=True
